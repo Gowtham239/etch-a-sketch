@@ -18,3 +18,9 @@ body {
     align-items: center;
     gap: 10px; 
 }
+
+.btn-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}

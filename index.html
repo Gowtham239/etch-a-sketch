@@ -11,7 +11,12 @@
     <div class="bg-container">
         <div class="sketch-board"></div>
         <p class="message"></p>
-        <button type="button" class="btn btn-info" id="button">Info</button>
+        <div class="btn-container">
+            <button type="button" class="btn btn-info" id="select">Input</button>
+            <button type="button" class="btn btn-primary"id="random-color" onclick="setColor('random')">Random Color</button>
+            <button type="button" class="btn btn-primary" id="reset">Reset</button>
+            <button type="button" class="btn btn-dark" onclick="setColor('black')">Black</button>
+        </div>
     </div>    
     <script src="app.js"></script>
 </body>
