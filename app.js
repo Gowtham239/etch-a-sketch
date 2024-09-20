@@ -1,5 +1,6 @@
 let color = "black";
 let click = false;
+let isErase = false;
 
 document.addEventListener("DOMContentLoaded", function() {
     sketchBoard(16);
@@ -15,6 +16,12 @@ document.addEventListener("DOMContentLoaded", function() {
         let size = getSize();
         sketchBoard(size);
     });
+
+    const eraseBtn = document.getElementById("erase");
+    eraseBtn.addEventListener("click", () => {
+        isErase = !isErase;
+        eraseBtn.textContent = isErase ? "Draw" : "Erase";
+    })
 });
 
 function sketchBoard(size) {
@@ -45,10 +52,14 @@ function getSize() {
 
 function colorDiv() {
     if(click) {
-        if(color == "random") {
-            this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        if(isErase) {
+            this.style.backgroundColor = "white";
         } else {
-            this.style.backgroundColor = "black";
+            if(color == "random") {
+                this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            } else {
+                this.style.backgroundColor = "black";
+            }
         }
     }
 }
