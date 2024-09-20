@@ -1,13 +1,19 @@
 let color = "black";
+let click = false;
 
 document.addEventListener("DOMContentLoaded", function() {
     sketchBoard(16);
+
+    document.querySelector('body').addEventListener("click", (e) => {
+        if(e.target.tagName != "BUTTON") {
+            click = !click;
+        }
+    })
+
     const inputButton = document.getElementById("select");
     inputButton.addEventListener("click", () => {
         let size = getSize();
-        if (size) { // Check if size is valid before calling sketchBoard
-            sketchBoard(size);
-        }
+        sketchBoard(size);
     });
 });
 
@@ -38,10 +44,12 @@ function getSize() {
 }
 
 function colorDiv() {
-    if(color == "random") {
-        this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-    } else {
-        this.style.backgroundColor = "black";
+    if(click) {
+        if(color == "random") {
+            this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        } else {
+            this.style.backgroundColor = "black";
+        }
     }
 }
 
